@@ -1,0 +1,13 @@
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+@{
+    ViewData["Title"] = "Polityka prywatności";
+    var dayOfWeek = DateTime.Now.DayOfWeek;
+}
+<h1>@ViewData["Title"]</h1>
+
+<h2>
+    Session values:<br/>
+    @HttpContextAccessor.HttpContext.Session.GetString("CurrentTime")<br/>
+    @HttpContextAccessor.HttpContext.Session.GetInt32("Counter")<br/>
+</h2>
