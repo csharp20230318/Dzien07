@@ -1,0 +1,33 @@
+﻿@model Person
+
+@{
+	ViewData["Title"] = "Delete";
+}
+
+<h2>Usuwanie</h2>
+
+@using (Html.BeginForm("DeleteConfirmed","Person"))
+{
+
+	@Html.AntiForgeryToken()
+
+	<div class="form-horizontal">
+		<h4>Potwierdź usunięcie danych</h4>
+		<p>
+			Czy na pewno chcesz usunąć rekord o ID = @Html.DisplayFor(modelItem => Model.PersonId)
+		</p>
+		@Html.HiddenFor(model => model.PersonId)
+
+		<div class="form-group">
+			<div class="col-md-12">
+				<input type="submit" value="Delete" class="btn btn-danger" />
+			</div>
+		</div>
+
+	</div>
+
+}
+
+<div>
+	@Html.ActionLink("Back to list", "Index")
+</div>

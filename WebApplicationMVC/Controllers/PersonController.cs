@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using WebApplicationMVC.Models;
 
 namespace WebApplicationMVC.Controllers
@@ -33,7 +34,40 @@ namespace WebApplicationMVC.Controllers
         [HttpPost]
         public IActionResult Edit(Person person)
         {
-            return View();
+			// update
+			var p = peopleList.Where(x => x.PersonId == person.PersonId).FirstOrDefault();
+			if (p == null)
+			{
+				return NotFound();
+			}
+            peopleList.Remove(p);
+            peopleList.Add(person);
+			return RedirectToAction("Index");
         }
-    }
+
+        public IActionResult Delete(int Id)
+        {
+			var p = peopleList.Where(x => x.PersonId == Id).FirstOrDefault();
+			if (p == null)
+			{
+				return NotFound();
+			}
+            //peopleList.Remove(p);
+            //return RedirectToAction("Index");
+            return View(p);
+		}
+
+        [HttpPost]
+        public IActionResult DeleteConfirmed(Person person)
+        {
+			var p = peopleList.Where(x => x.PersonId == person.PersonId).FirstOrDefault();
+			if (p == null)
+			{
+				return NotFound();
+			}
+			peopleList.Remove(p);
+			return RedirectToAction("Index");
+		}
+
+	}
 }
