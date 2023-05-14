@@ -1,0 +1,18 @@
+﻿@model Person
+
+@{
+	ViewData["Title"] = "Edycja";
+}
+
+<h2>Edycja</h2>
+
+@using (Html.BeginForm()) {
+
+	@Html.AntiForgeryToken()
+
+	<div class="form-horizontal">
+		<h4>Edycja danych</h4>
+		@Html.HiddenFor(model => model.PersonId)
+	</div>
+
+}
