@@ -8,7 +8,6 @@ namespace WebApplicationMVC.Models
         [Required(ErrorMessage ="Wprowadź coś!")]
         public string Name { get; set; } = default!;
         
-        [Required]
         [EmailAddress]
         public string Email { get; set; } = default!;
         public string Country { get; set; } = default!;
